@@ -14,8 +14,18 @@
  * limitations under the License.
  */
 
-#!TODO
-output "network_name" {
-  description = "The name of the VPC being created"
-  value       = module.mig_vpc.network_name
+terraform {
+  required_version = ">= 0.13.0"
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 3.45"
+    }
+  }
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-waap:mig-network/v0.0.1"
+  }
+  provider_meta "google-beta" {
+    module_name = "blueprints/terraform/terraform-google-waap:mig-network/v0.0.1"
+  }
 }
